@@ -2,8 +2,8 @@ package main
 
 import "fmt"
 
-func main()  {
-	digits := []int{1,9,9,9}
+func main() {
+	digits := []int{1, 9, 9, 9}
 	ret := plusOne(digits)
 	fmt.Printf("ret: %v \n", ret)
 }
@@ -15,10 +15,15 @@ func main()  {
  */
 func plusOne(digits []int) []int {
 	n := len(digits)
+	/*
+	 * 从最后开始便利，查看倒数第几位元素不等于9
+	 * 不为9，则+1
+	 * 不是最后一位不等于9，则后几位改为0
+	 */
 	for i := n - 1; i >= 0; i-- {
 		if digits[i] != 9 {
 			digits[i]++
-			for j := i + 1; j < n; j ++ {
+			for j := i + 1; j < n; j++ {
 				digits[j] = 0
 			}
 			return digits
@@ -26,7 +31,7 @@ func plusOne(digits []int) []int {
 	}
 
 	// 所有元素都为9
-	digits = make([]int, n + 1)
+	digits = make([]int, n+1)
 	digits[0] = 1
 	return digits
 }
