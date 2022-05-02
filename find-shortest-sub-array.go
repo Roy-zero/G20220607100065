@@ -10,8 +10,8 @@ func main()  {
 }
 
 type Appear struct {
-	AppearTime int  // 第一次出现的位置
-	FirstIndex int   // 最后一次出现的位置
+	AppearTime int	// 出现次数
+	FirstIndex int	// 第一次出现的位置
 }
 
 func findShortestSubArray(nums []int) int {
