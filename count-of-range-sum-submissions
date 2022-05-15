@@ -1,0 +1,57 @@
+package main
+
+func main() {
+
+}
+
+var lo, hi int
+
+func countRangeSum(nums []int, lower, upper int) int {
+	preSum := make([]int, len(nums)+1)
+	for i, v := range nums {
+		preSum[i+1] = preSum[i] + v
+	}
+	lo, hi = lower, upper
+	return mergeCount(preSum)
+}
+
+func mergeCount(arr []int) int {
+	n := len(arr)
+	if n < 2 {
+		return 0
+	}
+	n1 := append([]int{}, arr[:n/2]...)
+	n2 := append([]int{}, arr[n/2:]...)
+	cnt := mergeCount(n1) + mergeCount(n2) // 递归完成后， n1、n2 均为有序
+	// 统计分别在 n1、 n2 中满足要求的下标对的数量
+	cnt += calPairs(n1, n2)
+	// n1、n2 归并填入 arr，使 arr 有序
+	merge(arr, n1, n2)
+	return cnt
+}
+
+func calPairs(n1, n2 []int) int {
+	res := 0
+	var l, r int
+	for _, v := range n1 {
+		for ; l < len(n2) && n2[l] < v+lo; l++ {
+		}
+		for r = l; r < len(n2) && n2[r] <= v+hi; r++ {
+		}
+		res += r - l
+	}
+	return res
+}
+
+func merge(arr, n1, n2 []int) {
+	p1, p2 := 0, 0
+	for i := range arr {
+		if p1 < len(n1) && (p2 == len(n2) || n1[p1] <= n2[p2]) {
+			arr[i] = n1[p1]
+			p1++
+		} else {
+			arr[i] = n2[p2]
+			p2++
+		}
+	}
+}
