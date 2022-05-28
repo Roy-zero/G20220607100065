@@ -1,11 +1,12 @@
 package api
 
 import (
-	"G20220607100065/Go-009/Week02/common"
-	"G20220607100065/Go-009/Week02/dao"
-	"G20220607100065/Go-009/Week02/service"
 	"errors"
 	"log"
+
+	"G20220607100065/Go-009/week02/common"
+	"G20220607100065/Go-009/week02/dao"
+	"G20220607100065/Go-009/week02/service"
 )
 
 func QueryUser() {

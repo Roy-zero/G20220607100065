@@ -1,7 +1,7 @@
 package service
 
 import (
-	"G20220607100065/Go-009/Week02/dao"
+	"G20220607100065/Go-009/week02/dao"
 	"fmt"
 )
 

@@ -1,9 +1,10 @@
 package dao
 
 import (
-	"G20220607100065/Go-009/Week02/common"
 	"database/sql"
 	"github.com/pkg/errors"
+
+	"G20220607100065/Go-009/week02/common"
 )
 
 type userInfo struct {
